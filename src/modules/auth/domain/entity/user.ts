@@ -34,7 +34,13 @@ export class User {
   }
 
   static create(props: CreateProps) {
-    return new User({ ...props, id: randomUUID() });
+    return new User({
+      ...props,
+      id: randomUUID(),
+      password: props.rawPassword
+        ? Password.create({ rawPassword: props.rawPassword })
+        : undefined,
+    });
   }
 
   getId(): string {
@@ -47,5 +53,9 @@ export class User {
 
   getName(): string {
     return this.name;
+  }
+
+  getPassword() {
+    return this.password;
   }
 }

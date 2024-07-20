@@ -13,7 +13,7 @@ type BuildProps = CreateProps & {
   id: string;
 };
 
-export class Session {
+export abstract class Session {
   private id: string;
   private token: string;
   private expiresAt: Date;
@@ -24,10 +24,6 @@ export class Session {
     this.token = props.token;
     this.expiresAt = props.expiresAt;
     this.clientId = props.clientId;
-  }
-
-  static build(props: BuildProps) {
-    return new Session(props);
   }
 
   protected static generateExpiresAt() {
