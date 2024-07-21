@@ -1,7 +1,7 @@
+import { UseCase } from "../../../common";
 import { User } from "../../domain/entity/user";
-import { UserAlreadyExistsError } from "../../errors/user-already-exists-error";
+import { UserAlreadyExistsError } from "../../error/user-already-exists-error";
 import { UserRepository } from "../contracts/repository/user-repository";
-import { UseCase } from "../contracts/use-case";
 
 export class SignUpUseCase implements UseCase<Input, Output> {
   constructor(private readonly userRepository: UserRepository) {}

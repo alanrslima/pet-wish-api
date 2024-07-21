@@ -1,14 +1,14 @@
+import { UseCase } from "../../../common";
 import { Pet } from "../../domain/entity/pet";
 import { PetRepository } from "../contracts/repository/pet-repository";
-import { UseCase } from "../contracts/use-case";
 
-export class CreatePetUseCase implements UseCase<Input, Output> {
+export class RegisterPetUseCase implements UseCase<Input, Output> {
   constructor(private readonly petRepository: PetRepository) {}
 
   async execute(input: Input): Promise<void> {
     const pet = Pet.create({
       name: input.name,
-      ownerId: input.ownerId,
+      donorId: input.donorId,
       categoryId: input.categoryId,
       breedId: input.breedId,
     });
@@ -17,7 +17,7 @@ export class CreatePetUseCase implements UseCase<Input, Output> {
 }
 
 type Input = {
-  ownerId: string;
+  donorId: string;
   categoryId: string;
   weight?: number;
   name: string;

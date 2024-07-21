@@ -1,5 +1,5 @@
 import { User } from "../../../domain/entity/user";
-import { UserAlreadyExistsError } from "../../../errors/user-already-exists-error";
+import { UserAlreadyExistsError } from "../../../error/user-already-exists-error";
 import { UserMemoryRepository } from "../../../infra/repository/memory/user-memory-repository";
 import { SignUpUseCase } from "../sign-up-use-case";
 

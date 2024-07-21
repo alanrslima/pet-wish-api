@@ -1,4 +1,4 @@
-import { InvalidEmailError } from "../../errors/invalid-email-error";
+import { InvalidEmailError } from "../../error/invalid-email-error";
 
 export class Email {
   private value: string;

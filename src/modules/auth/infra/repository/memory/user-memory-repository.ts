@@ -1,6 +1,6 @@
 import { UserRepository } from "../../../application/contracts/repository/user-repository";
 import { User } from "../../../domain/entity/user";
-import { UserNotFoundError } from "../../../errors/user-not-found-error";
+import { UserNotFoundError } from "../../../error/user-not-found-error";
 
 export class UserMemoryRepository implements UserRepository {
   private data: User[];

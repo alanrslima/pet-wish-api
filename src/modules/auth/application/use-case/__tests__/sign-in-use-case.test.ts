@@ -1,5 +1,5 @@
 import { User } from "../../../domain/entity/user";
-import { InvalidCredentialsError } from "../../../errors/invalid-credentials-error";
+import { InvalidCredentialsError } from "../../../error/invalid-credentials-error";
 import { UserMemoryRepository } from "../../../infra/repository/memory/user-memory-repository";
 import { SignInUseCase } from "../sign-in-use-case";
 

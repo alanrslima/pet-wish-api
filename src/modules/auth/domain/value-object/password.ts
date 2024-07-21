@@ -1,5 +1,5 @@
 import crypto from "node:crypto";
-import { InvalidPasswordPolicyError } from "../../errors/invalid-password-policy-error";
+import { InvalidPasswordPolicyError } from "../../error/invalid-password-policy-error";
 
 export class Password {
   private hash: string;

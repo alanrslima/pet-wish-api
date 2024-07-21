@@ -1,7 +1,7 @@
+import { UseCase } from "../../../common";
 import { UserSession } from "../../domain/entity/user-session";
-import { InvalidCredentialsError } from "../../errors/invalid-credentials-error";
+import { InvalidCredentialsError } from "../../error/invalid-credentials-error";
 import { UserRepository } from "../contracts/repository/user-repository";
-import { UseCase } from "../contracts/use-case";
 
 export class SignInUseCase implements UseCase<Input, Output> {
   constructor(private readonly userRepository: UserRepository) {}

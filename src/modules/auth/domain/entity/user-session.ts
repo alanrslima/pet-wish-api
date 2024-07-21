@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { InvalidCredentialsError } from "../../errors/invalid-credentials-error";
+import { InvalidCredentialsError } from "../../error/invalid-credentials-error";
 import { Session } from "./session";
 import { User } from "./user";
 

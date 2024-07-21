@@ -1,4 +1,4 @@
-import { InvalidNameError } from "../../errors/invalid-name-error";
+import { InvalidNameError } from "../../error/invalid-name-error";
 
 export class Name {
   private value: string;
