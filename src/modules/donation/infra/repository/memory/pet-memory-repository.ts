@@ -19,6 +19,12 @@ export class PetMemoryRepository implements PetRepository {
     return pet;
   }
 
+  async update(pet: Pet): Promise<void> {
+    this.data = this.data.map((item) =>
+      item.getId() === pet.getId() ? pet : item
+    );
+  }
+
   getData() {
     return this.data;
   }

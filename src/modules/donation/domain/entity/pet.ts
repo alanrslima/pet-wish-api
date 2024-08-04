@@ -67,6 +67,10 @@ export class Pet {
     this.status = new Type("available", petStatusArray);
   }
 
+  reject() {
+    this.status = new Type("rejected", petStatusArray);
+  }
+
   updatePrice(price: number) {
     this.price = new Price(price);
   }

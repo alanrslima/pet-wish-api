@@ -2,7 +2,7 @@ export class Type<T extends string> {
   private validValues: T[];
   private value: string;
 
-  constructor(input: string, validValues: T[]) {
+  constructor(input: T, validValues: T[]) {
     this.validValues = validValues;
     this.validate(input);
     this.value = input;
