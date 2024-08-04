@@ -1,6 +1,6 @@
-import { PetRepository } from "../../application/contracts/repository/pet-repository";
-import { Pet } from "../../domain/entity/pet";
-import { PetNotFoundError } from "../../error/pet-not-found-error";
+import { PetRepository } from "../../../application/contract/repository/pet-repository";
+import { Pet } from "../../../domain/entity/pet";
+import { PetNotFoundError } from "../../../error/pet-not-found-error";
 
 export class PetMemoryRepository implements PetRepository {
   private data: Pet[];

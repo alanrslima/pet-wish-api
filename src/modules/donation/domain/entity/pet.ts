@@ -1,72 +1,73 @@
 import { randomUUID } from "node:crypto";
-import { Adopter } from "./adopter";
-import { PetNotAvailableForDonate } from "../../error/pet-not-available-for-donate-error";
+import { Dating } from "../value-object/date";
+import { Price } from "../value-object/price";
+import { Text } from "../value-object/text";
+import { Type } from "../value-object/type";
 
 type CreateProps = {
   name: string;
-  categoryId: string;
-  donorId: string;
-  breedId: string;
-  weight?: number;
+  specie: string;
+  breed: string;
+  birthday: string;
+  description: string;
+  price: number;
 };
+
+type PetStatus = "available" | "pending" | "rejected";
+const petStatusArray: PetStatus[] = ["available", "pending", "rejected"];
 
 type BuildProps = CreateProps & {
   id: string;
   donatedAt?: Date;
+  status: PetStatus;
 };
 
 export class Pet {
-  private name: string;
-  private id: string;
-  private categoryId: string;
-  private donorId: string;
-  private breedId: string;
-  private weight?: number;
-  private donatedAt?: Date;
+  private readonly id: Text;
+  private name: Text;
+  private specie: Text;
+  private breed: Text;
+  private birthday: Dating;
+  private description: Text;
+  private status: Type<PetStatus>;
+  private price: Price;
 
   private constructor(props: BuildProps) {
-    this.id = props.id;
-    this.name = props.name;
-    this.categoryId = props.categoryId;
-    this.donorId = props.donorId;
-    this.weight = props.weight;
-    this.breedId = props.breedId;
-    this.donatedAt = props.donatedAt;
+    this.id = new Text(props.id);
+    (this.name = new Text(props.name)), "name";
+    this.specie = new Text(props.specie, "specie");
+    this.breed = new Text(props.breed, "breed");
+    this.birthday = new Dating(props.birthday);
+    this.description = new Text(props.description);
+    this.status = new Type<PetStatus>(props.status, petStatusArray);
+    this.price = new Price(props.price);
   }
 
   static create(props: CreateProps) {
-    return new Pet({ ...props, id: randomUUID() });
+    return new Pet({ ...props, id: randomUUID(), status: "pending" });
   }
 
   getId(): string {
-    return this.id;
+    return this.id.getValue();
   }
 
-  getName(): string {
-    return this.name;
+  getStatus(): PetStatus {
+    return this.status.getValue();
   }
 
-  getCategoryId(): string {
-    return this.categoryId;
+  getPrice(): number {
+    return this.price.getValue();
   }
 
-  getBreedId(): string {
-    return this.breedId;
+  isAvailable(): boolean {
+    return this.status.getValue() === "available";
   }
 
-  getDonorId(): string {
-    return this.donorId;
+  approve() {
+    this.status = new Type("available", petStatusArray);
   }
 
-  getWeight(): number | undefined {
-    return this.weight;
-  }
-
-  private wasDonated(): boolean {
-    return Boolean(this.donatedAt);
-  }
-
-  requestAdopt(adopter: Adopter, reason: string) {
-    if (this.wasDonated()) throw new PetNotAvailableForDonate();
+  updatePrice(price: number) {
+    this.price = new Price(price);
   }
 }
