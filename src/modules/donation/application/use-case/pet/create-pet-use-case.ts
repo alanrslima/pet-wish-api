@@ -1,6 +1,6 @@
-import { UseCase } from "../../../common";
-import { Pet } from "../../domain/entity/pet";
-import { PetRepository } from "../contract/repository/pet-repository";
+import { UseCase } from "../../../../common";
+import { Pet } from "../../../domain/entity/pet";
+import { PetRepository } from "../../contract/repository/pet-repository";
 
 export class CreatePetUseCase implements UseCase<Input, Output> {
   constructor(private readonly petRepository: PetRepository) {}
@@ -13,12 +13,13 @@ export class CreatePetUseCase implements UseCase<Input, Output> {
       name: input.name,
       price: input.price,
       specie: input.specie,
+      ownerId: "123",
     });
     await this.petRepository.create(pet);
   }
 }
 
-type Input = {
+export type Input = {
   birthday: string;
   breed: string;
   description: string;

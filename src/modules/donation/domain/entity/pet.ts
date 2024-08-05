@@ -1,5 +1,5 @@
 import { randomUUID } from "node:crypto";
-import { Dating } from "../value-object/date";
+import { Dating } from "../value-object/dating";
 import { Price } from "../value-object/price";
 import { Text } from "../value-object/text";
 import { Type } from "../value-object/type";
@@ -11,6 +11,7 @@ type CreateProps = {
   birthday: string;
   description: string;
   price: number;
+  ownerId: string;
 };
 
 type PetStatus = "available" | "pending" | "rejected";
@@ -23,7 +24,8 @@ type BuildProps = CreateProps & {
 };
 
 export class Pet {
-  private readonly id: Text;
+  private id: Text;
+  private ownerId: Text;
   private name: Text;
   private specie: Text;
   private breed: Text;
@@ -34,7 +36,8 @@ export class Pet {
 
   private constructor(props: BuildProps) {
     this.id = new Text(props.id);
-    (this.name = new Text(props.name)), "name";
+    this.ownerId = new Text(props.ownerId, "ownerId");
+    this.name = new Text(props.name, "name");
     this.specie = new Text(props.specie, "specie");
     this.breed = new Text(props.breed, "breed");
     this.birthday = new Dating(props.birthday);
@@ -57,6 +60,10 @@ export class Pet {
 
   getPrice(): number {
     return this.price.getValue();
+  }
+
+  getOwnerId(): string {
+    return this.ownerId.getValue();
   }
 
   isAvailable(): boolean {

@@ -19,7 +19,7 @@ export class SignUpUseCase implements UseCase<Input, Output> {
   }
 }
 
-type Input = {
+export type Input = {
   email: string;
   name: string;
   password: string;

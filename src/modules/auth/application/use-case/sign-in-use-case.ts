@@ -17,7 +17,7 @@ export class SignInUseCase implements UseCase<Input, Output> {
   }
 }
 
-type Input = {
+export type Input = {
   email: string;
   password: string;
 };

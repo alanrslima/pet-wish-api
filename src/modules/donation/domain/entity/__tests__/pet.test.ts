@@ -8,6 +8,7 @@ it("should create a pet", () => {
     name: "Rex",
     price: 300,
     specie: "dog",
+    ownerId: "123",
   });
   expect(pet.getId()).toBeDefined();
   expect(pet.getPrice()).toEqual(300);
@@ -22,6 +23,7 @@ it("should create and approve pet", () => {
     name: "Rex",
     price: 300,
     specie: "dog",
+    ownerId: "123",
   });
   pet.approve();
   expect(pet.getId()).toBeDefined();
