@@ -6,6 +6,11 @@ const envVariables = {
     "Ambiente da aplicação. Valores suportados = development | staging | production",
   PORT: "Porta que a api irá utilizar",
   JWT_SECRET: "Chave privada para os tokens JWT",
+  MYSQL_USER: "",
+  MYSQL_DATABASE: "",
+  MYSQL_PASSWORD: "",
+  MYSQL_PORT: "",
+  MYSQL_HOST: "",
 };
 
 const envsMapper: { [key in keyof typeof envVariables]: any } = {} as any;
