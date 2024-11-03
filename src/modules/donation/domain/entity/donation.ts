@@ -76,4 +76,8 @@ export class Donation {
   approve(): void {
     this.status = new Type("approved", donationStatusArray);
   }
+
+  reject(): void {
+    this.status = new Type("rejected", donationStatusArray);
+  }
 }

@@ -2,7 +2,7 @@ import { Controller, ok, HttpResponse } from "../../../../common";
 import {
   CreatePetUseCase,
   Input,
-} from "../../../application/use-case/pet/create-pet-use-case";
+} from "../../../application/use-case/create-pet-use-case";
 
 export class CreatePetController implements Controller {
   constructor(private readonly createPetUseCase: CreatePetUseCase) {}

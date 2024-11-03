@@ -1,8 +1,8 @@
-import { UseCase } from "../../../../common";
-import { NotAllowedToApproveDonationError } from "../../../error/not-allowed-to-approve-donation-error";
-import { DonationRepository } from "../../contract/repository/donation-repository";
+import { UseCase } from "../../../common";
+import { NotAllowedToApproveDonationError } from "../../error/not-allowed-to-approve-donation-error";
+import { DonationRepository } from "../contract/repository/donation-repository";
 
-export class ApprovePetDonation implements UseCase<Input, Output> {
+export class ApprovePetDonationUseCase implements UseCase<Input, Output> {
   constructor(private readonly donationRepository: DonationRepository) {}
 
   async execute(input: Input): Promise<void> {

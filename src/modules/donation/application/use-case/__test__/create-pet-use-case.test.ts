@@ -1,5 +1,5 @@
 import { PetMemoryRepository } from "../../../infra/repository/memory/pet-memory-repository";
-import { CreatePetUseCase } from "../pet/create-pet-use-case";
+import { CreatePetUseCase } from "../create-pet-use-case";
 
 it("should create a new pet", async () => {
   const petMemoryRepository = new PetMemoryRepository();

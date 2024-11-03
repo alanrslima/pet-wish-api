@@ -1,12 +1,12 @@
-import { UseCase } from "../../../../common";
-import { PetRepository } from "../../contract/repository/pet-repository";
+import { UseCase } from "../../../common";
+import { PetRepository } from "../contract/repository/pet-repository";
 
-export class RejectPetUseCase implements UseCase<Input, Output> {
+export class ApprovePetUseCase implements UseCase<Input, Output> {
   constructor(private readonly petRepository: PetRepository) {}
 
   async execute(input: Input): Promise<void> {
     const pet = await this.petRepository.getById(input.petId);
-    pet.reject();
+    pet.approve();
     await this.petRepository.update(pet);
   }
 }

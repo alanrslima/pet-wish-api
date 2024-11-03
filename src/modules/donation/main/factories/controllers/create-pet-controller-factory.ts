@@ -1,5 +1,5 @@
 import { Controller } from "../../../../common";
-import { CreatePetUseCase } from "../../../application/use-case/pet/create-pet-use-case";
+import { CreatePetUseCase } from "../../../application/use-case/create-pet-use-case";
 import { PetMemoryRepository } from "../../../infra/repository/memory/pet-memory-repository";
 import { CreatePetController } from "../../../presentation/controller/pet/create-pet-controller";
 
